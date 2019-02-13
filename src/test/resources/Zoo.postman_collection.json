@@ -1,0 +1,69 @@
+{
+	"info": {
+		"_postman_id": "7f455369-f96c-4d00-ab76-5fb5a279c251",
+		"name": "Zoo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Enclosures",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/enclosures",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"enclosures"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Enclosure",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Big Ape House\",\n\t\"length\": 2,\n\t\"width\": 2,\n\t\"type\": \"/enclosureTypes/1\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/enclosures",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"enclosures"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
