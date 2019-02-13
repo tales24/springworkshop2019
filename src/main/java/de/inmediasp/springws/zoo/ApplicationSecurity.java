@@ -33,6 +33,8 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
                 .formLogin()
                     .permitAll()
                 .and()
+                .httpBasic()
+                .and()
                 .authorizeRequests()
                     .antMatchers(HttpMethod.GET, "/animals/**")
                         .hasAnyRole("VISITOR", "KEEPER", "DIRECTOR")
