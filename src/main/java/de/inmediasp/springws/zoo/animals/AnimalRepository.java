@@ -10,5 +10,5 @@ import java.util.List;
 @RepositoryRestResource
 public interface AnimalRepository extends JpaRepository<Animal, Long> {
     @Secured("ROLE_USER")
-    List<Animal> getAllByIdGreaterThan(@Param("number") int number);
+    List<Animal> getAllByIdGreaterThan(@Param("number") Long number);
 }
