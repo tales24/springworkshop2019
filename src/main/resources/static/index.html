@@ -14,7 +14,7 @@
 <body>
 <h1>Demo</h1>
 <div class="container unauthenticated">
-    With GitHub: <a href="/login/github">click here</a>
+    With OpenId: <a href="/login/okta">click here</a>
 </div>
 <div class="container authenticated" style="display:none">
     Logged in as: <span id="user"></span>
@@ -39,7 +39,7 @@
     });
 
     $.get("/user", function (data) {
-        $("#user").html(data.userAuthentication.details.login);
+        $("#user").html(data);
         $(".unauthenticated").hide();
         $(".authenticated").show()
     });

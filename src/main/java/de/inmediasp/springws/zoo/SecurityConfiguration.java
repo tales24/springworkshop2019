@@ -32,14 +32,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    @ConfigurationProperties("github.client")
-    public AuthorizationCodeResourceDetails github() {
+    @ConfigurationProperties("okta.client")
+    public AuthorizationCodeResourceDetails okta() {
         return new AuthorizationCodeResourceDetails();
     }
 
     @Bean
-    @ConfigurationProperties("github.resource")
-    public ResourceServerProperties githubResources() {
+    @ConfigurationProperties("okta.resource")
+    public ResourceServerProperties oktaResources() {
         return new ResourceServerProperties();
     }
 
@@ -67,11 +67,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     private Filter ssoFilter() {
-        final OAuth2ClientAuthenticationProcessingFilter githubFilter = new OAuth2ClientAuthenticationProcessingFilter("/login/github");
-        final OAuth2RestTemplate githubTemplate = new OAuth2RestTemplate(github(), oauth2ClientContext);
+        final OAuth2ClientAuthenticationProcessingFilter githubFilter = new OAuth2ClientAuthenticationProcessingFilter("/login/okta");
+        final OAuth2RestTemplate githubTemplate = new OAuth2RestTemplate(okta(), oauth2ClientContext);
         githubFilter.setRestTemplate(githubTemplate);
 
-        final UserInfoTokenServices tokenServices = new UserInfoTokenServices(githubResources().getUserInfoUri(), github().getClientId());
+        final UserInfoTokenServices tokenServices = new UserInfoTokenServices(oktaResources().getUserInfoUri(), okta().getClientId());
         tokenServices.setRestTemplate(githubTemplate);
         githubFilter.setTokenServices(tokenServices);
 
